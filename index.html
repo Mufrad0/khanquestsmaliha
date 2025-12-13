@@ -423,12 +423,18 @@
             background: white;
             border-radius: 4px;
             box-shadow: 0 4px 30px rgba(0,0,0,0.04);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid transparent;
         }
 
-        .event-card:hover {
+        .event-card:hover,
+        .event-card:active {
             transform: translateX(10px);
-            box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+            box-shadow: 
+                0 8px 40px rgba(0,0,0,0.08),
+                0 0 30px rgba(201, 164, 86, 0.1);
+            border-color: rgba(201, 164, 86, 0.3);
+            background: linear-gradient(135deg, white 0%, rgba(250, 247, 242, 1) 100%);
         }
 
         .event-card::before {
@@ -442,6 +448,13 @@
             border-radius: 50%;
             transform: translateX(-50%);
             box-shadow: 0 0 0 4px var(--cream), 0 0 0 5px var(--gold);
+            transition: all 0.4s ease;
+        }
+
+        .event-card:hover::before,
+        .event-card:active::before {
+            box-shadow: 0 0 0 4px var(--cream), 0 0 0 5px var(--gold), 0 0 20px rgba(201, 164, 86, 0.5);
+            transform: translateX(-50%) scale(1.1);
         }
 
         .event-card .event-date {
@@ -451,6 +464,12 @@
             text-transform: uppercase;
             color: var(--gold);
             margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .event-card:hover .event-date,
+        .event-card:active .event-date {
+            letter-spacing: 0.25em;
         }
 
         .event-card .event-name {
@@ -458,6 +477,12 @@
             font-size: 1.8rem;
             color: var(--burgundy);
             margin-bottom: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .event-card:hover .event-name,
+        .event-card:active .event-name {
+            color: var(--burgundy-light);
         }
 
         .event-card .event-details {
@@ -496,120 +521,261 @@
             border-radius: 50%;
             border: 2px solid white;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .color-swatch:hover {
+            transform: scale(1.2) translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
 
         /* Contact Section */
         .contact-section {
-            background: linear-gradient(135deg, var(--burgundy) 0%, var(--burgundy-light) 100%);
-            color: white;
+            background: var(--burgundy);
+            padding: 6rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(201, 164, 86, 0.06) 0%, transparent 50%);
+            pointer-events: none;
         }
 
         .contact-section .section-header h2 {
             color: white;
         }
 
-        .contact-section .section-header p {
-            color: rgba(255,255,255,0.7);
+        .contact-section .section-header .ornament .line {
+            background: var(--gold);
         }
 
-        .contact-section .section-header .ornament .line,
         .contact-section .section-header .ornament .diamond {
             background: var(--gold);
         }
 
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            max-width: 800px;
+        .contact-wrapper {
+            max-width: 600px;
             margin: 0 auto;
-        }
-
-        .contact-card {
             text-align: center;
-            padding: 2rem;
-            background: rgba(255,255,255,0.05);
-            border-radius: 4px;
-            border: 1px solid rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 1;
         }
 
-        .contact-card .icon {
-            width: 50px;
-            height: 50px;
-            margin: 0 auto 1rem;
+        .contact-intro {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-style: italic;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem 2rem;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 8px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(201, 164, 86, 0.15) 0%, rgba(255,255,255,0.08) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .contact-item::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light), var(--gold));
+            border-radius: 10px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .contact-item:hover,
+        .contact-item:active {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(201, 164, 86, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 
+                0 10px 40px rgba(0,0,0,0.2),
+                0 0 30px rgba(201, 164, 86, 0.15),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+
+        .contact-item:hover::before,
+        .contact-item:active::before {
+            opacity: 1;
+        }
+
+        .contact-item .icon {
+            width: 52px;
+            height: 52px;
+            min-width: 52px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(201, 164, 86, 0.2);
+            background: rgba(201, 164, 86, 0.15);
+            border: 1px solid rgba(201, 164, 86, 0.3);
             border-radius: 50%;
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 1;
         }
 
-        .contact-card .icon svg {
-            width: 24px;
-            height: 24px;
+        .contact-item:hover .icon,
+        .contact-item:active .icon {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-color: var(--gold);
+            box-shadow: 0 4px 20px rgba(201, 164, 86, 0.4);
+            transform: scale(1.05);
+        }
+
+        .contact-item .icon svg {
+            width: 22px;
+            height: 22px;
             stroke: var(--gold);
+            transition: stroke 0.4s ease;
         }
 
-        .contact-card h3 {
+        .contact-item:hover .icon svg,
+        .contact-item:active .icon svg {
+            stroke: white;
+        }
+
+        .contact-item .info {
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-item h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: white;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-card p {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1rem;
-            color: rgba(255,255,255,0.7);
-            margin-bottom: 0.25rem;
-        }
-
-        .contact-card a {
-            color: var(--gold);
-            text-decoration: none;
-            font-family: 'Lato', sans-serif;
-            font-size: 1rem;
+            margin-bottom: 0.2rem;
             transition: color 0.3s ease;
         }
 
-        .contact-card a:hover {
+        .contact-item:hover h3,
+        .contact-item:active h3 {
             color: var(--gold-light);
+        }
+
+        .contact-item .role {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.5);
+            font-style: italic;
+            margin-bottom: 0.4rem;
+        }
+
+        .contact-item a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gold);
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover a,
+        .contact-item:active a {
+            color: var(--gold-light);
+            letter-spacing: 0.15em;
+        }
+
+        .contact-item a svg {
+            width: 14px;
+            height: 14px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover a svg,
+        .contact-item:active a svg {
+            transform: translateX(4px);
         }
 
         /* Footer */
         footer {
             background: var(--burgundy);
-            color: white;
             text-align: center;
-            padding: 3rem 2rem;
+            padding: 4rem 2rem;
         }
 
         footer .logo-small {
-            width: 60px;
+            width: 50px;
             margin-bottom: 1.5rem;
-            opacity: 0.9;
         }
 
         footer .couple-names-small {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
+            color: white;
             margin-bottom: 0.5rem;
+        }
+
+        footer .couple-names-small .amp {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            color: var(--gold);
         }
 
         footer .date-small {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1rem;
-            opacity: 0.7;
+            color: rgba(255,255,255,0.6);
+            font-style: italic;
         }
 
         footer .credits {
-            margin-top: 2rem;
+            margin-top: 3rem;
             padding-top: 2rem;
             border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.75rem;
-            opacity: 0.5;
-            letter-spacing: 0.1em;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.4);
+            font-style: italic;
+        }
+
+        footer .credits span {
+            color: var(--gold);
         }
 
         /* Animations on Scroll */
@@ -649,12 +815,43 @@
                 left: -2rem;
             }
 
+            .event-card {
+                padding: 1.5rem;
+            }
+
+            .event-card:hover,
+            .event-card:active {
+                transform: translateX(5px);
+            }
+
             .countdown {
                 gap: 1rem;
             }
 
             .countdown-separator {
                 display: none;
+            }
+
+            .countdown-item .number {
+                font-size: 2.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .contact-item {
+                padding: 1.25rem 1.5rem;
+            }
+
+            .contact-item .icon {
+                width: 46px;
+                height: 46px;
+                min-width: 46px;
+            }
+
+            .contact-item h3 {
+                font-size: 1.1rem;
             }
         }
 
@@ -669,6 +866,99 @@
 
             section {
                 padding: 4rem 1.5rem;
+            }
+
+            .hero {
+                padding: 1.5rem;
+            }
+
+            .couple-names {
+                font-size: 2rem;
+            }
+
+            .logo {
+                width: 100px;
+            }
+
+            .tagline {
+                font-size: 0.7rem;
+                letter-spacing: 0.2em;
+            }
+
+            .date-banner .date {
+                font-size: 1.1rem;
+            }
+
+            .events-timeline {
+                padding-left: 1.5rem;
+            }
+
+            .event-card::before {
+                left: -1.5rem;
+                width: 10px;
+                height: 10px;
+            }
+
+            .event-card:hover,
+            .event-card:active {
+                transform: translateX(3px);
+            }
+
+            .event-card .event-name {
+                font-size: 1.4rem;
+            }
+
+            .event-card .event-details {
+                gap: 1rem;
+            }
+
+            .contact-section {
+                padding: 4rem 1.5rem;
+            }
+
+            .contact-intro {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .contact-item {
+                padding: 1.25rem;
+                gap: 1rem;
+            }
+
+            .contact-item .icon {
+                width: 44px;
+                height: 44px;
+                min-width: 44px;
+            }
+
+            .contact-item .icon svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .contact-item h3 {
+                font-size: 1.05rem;
+            }
+
+            .contact-item .role {
+                font-size: 0.85rem;
+            }
+
+            .contact-item a {
+                font-size: 0.75rem;
+            }
+
+            .countdown-item {
+                min-width: 70px;
+            }
+
+            .countdown-item .number {
+                font-size: 2rem;
+            }
+
+            .countdown-item .label {
+                font-size: 0.6rem;
             }
         }
     </style>
@@ -866,37 +1156,57 @@
                 <span class="line"></span>
             </div>
             <h2>Get in Touch</h2>
-            <p>For any queries regarding the celebration</p>
         </div>
 
-        <div class="contact-grid">
-            <div class="contact-card fade-in">
-                <div class="icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-                    </svg>
-                </div>
-                <h3>Ahmed Khan</h3>
-                <p>For event coordination</p>
-                <a href="tel:+1234567890">+1 (234) 567-890</a>
-            </div>
+        <div class="contact-wrapper">
+            <p class="contact-intro fade-in">
+                For any queries regarding the celebration,<br>
+                please feel free to reach out to us.
+            </p>
 
-            <div class="contact-card fade-in">
-                <div class="icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-                    </svg>
+            <div class="contact-list">
+                <div class="contact-item fade-in">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                        </svg>
+                    </div>
+                    <div class="info">
+                        <h3>Ahmed Khan</h3>
+                        <p class="role">Event Coordination</p>
+                        <a href="tel:+1234567890">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                            </svg>
+                            +1 (234) 567-890
+                        </a>
+                    </div>
                 </div>
-                <h3>Fatima Rahman</h3>
-                <p>For event coordination</p>
-                <a href="tel:+1234567891">+1 (234) 567-891</a>
+
+                <div class="contact-item fade-in">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                        </svg>
+                    </div>
+                    <div class="info">
+                        <h3>Fatima Rahman</h3>
+                        <p class="role">Event Coordination</p>
+                        <a href="tel:+1234567891">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                            </svg>
+                            +1 (234) 567-891
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <svg class="logo-small" viewBox="0 0 140 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 60px; margin-bottom: 1.5rem; opacity: 0.9;">
+        <svg class="logo-small" viewBox="0 0 140 160" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M25 140V40L70 100L115 40V140" stroke="#C9A456" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M115 40C120 30 130 25 130 35C130 45 120 40 115 40" stroke="#C9A456" stroke-width="2" fill="none" stroke-linecap="round"/>
             <path d="M70 100C75 110 85 115 80 120C75 125 65 115 70 100" stroke="#C9A456" stroke-width="1.5" fill="none" stroke-linecap="round"/>
@@ -904,9 +1214,9 @@
             <path d="M20 105C15 100 13 90 20 82C23 88 27 93 25 98C23 102 20 105 20 105" stroke="#C9A456" stroke-width="1.2" fill="none" stroke-linecap="round"/>
             <path d="M20 82C17 77 20 72 23 77C25 80 23 85 20 82" stroke="#C9A456" stroke-width="1.2" fill="none" stroke-linecap="round"/>
         </svg>
-        <p class="couple-names-small">Khan & Maliha</p>
+        <p class="couple-names-small">Khan <span class="amp">&</span> Maliha</p>
         <p class="date-small">January 17 – 21, 2026</p>
-        <p class="credits">Made with love</p>
+        <p class="credits">Made with <span>♥</span> love</p>
     </footer>
 
     <script>
