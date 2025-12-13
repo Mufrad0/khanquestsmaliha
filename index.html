@@ -353,6 +353,7 @@
             background: linear-gradient(135deg, var(--cream-dark) 0%, var(--cream) 100%);
             padding: 5rem 2rem;
             text-align: center;
+            max-width: 100%;
         }
 
         .countdown {
@@ -533,9 +534,10 @@
         /* Contact Section */
         .contact-section {
             background: var(--burgundy);
-            padding: 6rem 2rem 4rem;
+            padding: 5rem 2rem;
             position: relative;
             overflow: hidden;
+            max-width: 100%;
         }
 
         .contact-section::before {
@@ -547,6 +549,10 @@
             bottom: 0;
             background: radial-gradient(ellipse at 50% 0%, rgba(201, 164, 86, 0.06) 0%, transparent 50%);
             pointer-events: none;
+        }
+
+        .contact-section .section-header {
+            margin-bottom: 3rem;
         }
 
         .contact-section .section-header h2 {
@@ -732,11 +738,29 @@
             transform: translateX(4px);
         }
 
+        /* Footer Separator */
+        .footer-separator {
+            background: var(--cream);
+            height: 5rem;
+            position: relative;
+        }
+
+        .footer-separator::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, transparent, var(--gold));
+        }
+
         /* Footer */
         footer {
-            background: var(--burgundy);
+            background: var(--cream);
             text-align: center;
-            padding: 4rem 2rem;
+            padding: 2rem 2rem 4rem;
         }
 
         footer .logo-small {
@@ -747,7 +771,7 @@
         footer .couple-names-small {
             font-family: 'Playfair Display', serif;
             font-size: 1.4rem;
-            color: white;
+            color: var(--burgundy);
             margin-bottom: 0.5rem;
         }
 
@@ -760,17 +784,17 @@
         footer .date-small {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1rem;
-            color: rgba(255,255,255,0.6);
+            color: var(--text-light);
             font-style: italic;
         }
 
         footer .credits {
             margin-top: 3rem;
             padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(0,0,0,0.06);
             font-family: 'Cormorant Garamond', serif;
             font-size: 0.85rem;
-            color: rgba(255,255,255,0.4);
+            color: var(--text-light);
             font-style: italic;
         }
 
@@ -807,6 +831,18 @@
                 height: 80px;
             }
 
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .section-header {
+                margin-bottom: 3rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+
             .events-timeline {
                 padding-left: 2rem;
             }
@@ -836,8 +872,8 @@
                 font-size: 2.5rem;
             }
 
-            .section-header h2 {
-                font-size: 1.8rem;
+            .contact-section {
+                padding: 4rem 1.5rem;
             }
 
             .contact-item {
@@ -853,11 +889,21 @@
             .contact-item h3 {
                 font-size: 1.1rem;
             }
+
+            .footer-separator {
+                height: 4rem;
+            }
         }
 
         @media (max-width: 480px) {
             nav {
                 gap: 1rem;
+                padding: 0.8rem 1rem;
+            }
+
+            nav a {
+                font-size: 0.6rem;
+                letter-spacing: 0.15em;
             }
 
             .corner-decor {
@@ -865,32 +911,79 @@
             }
 
             section {
-                padding: 4rem 1.5rem;
+                padding: 3rem 1.25rem;
             }
 
             .hero {
-                padding: 1.5rem;
-            }
-
-            .couple-names {
-                font-size: 2rem;
+                padding: 1.5rem 1.25rem;
+                min-height: 100svh;
             }
 
             .logo {
-                width: 100px;
+                width: 90px;
+            }
+
+            .couple-names {
+                font-size: 1.8rem;
             }
 
             .tagline {
-                font-size: 0.7rem;
-                letter-spacing: 0.2em;
+                font-size: 0.65rem;
+                letter-spacing: 0.15em;
+            }
+
+            .date-banner {
+                gap: 1rem;
+            }
+
+            .date-banner .line {
+                width: 40px;
             }
 
             .date-banner .date {
-                font-size: 1.1rem;
+                font-size: 1rem;
+            }
+
+            .scroll-indicator {
+                bottom: 2rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .section-header p {
+                font-size: 1rem;
+            }
+
+            .countdown-section {
+                padding: 3rem 1.25rem;
+            }
+
+            .countdown {
+                gap: 0.75rem;
+            }
+
+            .countdown-item {
+                min-width: 65px;
+                padding: 0.5rem;
+            }
+
+            .countdown-item .number {
+                font-size: 2rem;
+            }
+
+            .countdown-item .label {
+                font-size: 0.55rem;
+                letter-spacing: 0.1em;
             }
 
             .events-timeline {
                 padding-left: 1.5rem;
+            }
+
+            .event-card {
+                padding: 1.25rem;
             }
 
             .event-card::before {
@@ -905,60 +998,121 @@
             }
 
             .event-card .event-name {
-                font-size: 1.4rem;
+                font-size: 1.3rem;
+            }
+
+            .event-card .event-date {
+                font-size: 0.65rem;
             }
 
             .event-card .event-details {
                 gap: 1rem;
+                margin-top: 1rem;
+                padding-top: 1rem;
             }
 
-            .contact-section {
-                padding: 4rem 1.5rem;
+            .event-card .detail-group h4 {
+                font-size: 0.6rem;
             }
 
-            .contact-intro {
+            .event-card .detail-group p {
                 font-size: 1rem;
-                margin-bottom: 2rem;
             }
 
-            .contact-item {
-                padding: 1.25rem;
-                gap: 1rem;
-            }
-
-            .contact-item .icon {
-                width: 44px;
-                height: 44px;
-                min-width: 44px;
-            }
-
-            .contact-item .icon svg {
+            .color-swatch {
                 width: 20px;
                 height: 20px;
             }
 
+            .contact-section {
+                padding: 3rem 1.25rem;
+            }
+
+            .contact-intro {
+                font-size: 0.95rem;
+                margin-bottom: 2rem;
+            }
+
+            .contact-list {
+                gap: 1rem;
+            }
+
+            .contact-item {
+                padding: 1rem 1.25rem;
+                gap: 1rem;
+            }
+
+            .contact-item .icon {
+                width: 42px;
+                height: 42px;
+                min-width: 42px;
+            }
+
+            .contact-item .icon svg {
+                width: 18px;
+                height: 18px;
+            }
+
             .contact-item h3 {
-                font-size: 1.05rem;
+                font-size: 1rem;
             }
 
             .contact-item .role {
-                font-size: 0.85rem;
+                font-size: 0.8rem;
             }
 
             .contact-item a {
-                font-size: 0.75rem;
+                font-size: 0.7rem;
+            }
+
+            .footer-separator {
+                height: 3rem;
+            }
+
+            .footer-separator::before {
+                height: 25px;
+            }
+
+            footer {
+                padding: 1.5rem 1.25rem 3rem;
+            }
+
+            footer .logo-small {
+                width: 40px;
+                margin-bottom: 1rem;
+            }
+
+            footer .couple-names-small {
+                font-size: 1.2rem;
+            }
+
+            footer .date-small {
+                font-size: 0.9rem;
+            }
+
+            footer .credits {
+                margin-top: 2rem;
+                padding-top: 1.5rem;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Extra small devices */
+        @media (max-width: 360px) {
+            .couple-names {
+                font-size: 1.5rem;
             }
 
             .countdown-item {
-                min-width: 70px;
+                min-width: 55px;
             }
 
             .countdown-item .number {
-                font-size: 2rem;
+                font-size: 1.6rem;
             }
 
-            .countdown-item .label {
-                font-size: 0.6rem;
+            .event-card .event-name {
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -1203,6 +1357,9 @@
             </div>
         </div>
     </section>
+
+    <!-- Footer Separator -->
+    <div class="footer-separator"></div>
 
     <!-- Footer -->
     <footer>
