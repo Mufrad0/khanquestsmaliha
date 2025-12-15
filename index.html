@@ -529,236 +529,11 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
 
-        /* Contact Section */
-        .contact-section {
-            background: var(--burgundy);
-            padding: 5rem 2rem;
-            position: relative;
-            overflow: hidden;
-            max-width: 100%;
-        }
-
-        .contact-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(ellipse at 50% 0%, rgba(201, 164, 86, 0.06) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .contact-section .section-header {
-            margin-bottom: 3rem;
-        }
-
-        .contact-section .section-header h2 {
-            color: white;
-        }
-
-        .contact-section .section-header .ornament .line {
-            background: var(--gold);
-        }
-
-        .contact-section .section-header .ornament .diamond {
-            background: var(--gold);
-        }
-
-        .contact-wrapper {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .contact-intro {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.15rem;
-            font-style: italic;
-            color: rgba(255,255,255,0.7);
-            margin-bottom: 3rem;
-            line-height: 1.8;
-        }
-
-        .contact-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            padding: 1.5rem 2rem;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 8px;
-            text-align: left;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(201, 164, 86, 0.15) 0%, rgba(255,255,255,0.08) 100%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .contact-item::after {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(135deg, var(--gold), var(--gold-light), var(--gold));
-            border-radius: 10px;
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .contact-item:hover,
-        .contact-item:active {
-            background: rgba(255,255,255,0.08);
-            border-color: rgba(201, 164, 86, 0.4);
-            transform: translateY(-2px);
-            box-shadow: 
-                0 10px 40px rgba(0,0,0,0.2),
-                0 0 30px rgba(201, 164, 86, 0.15),
-                inset 0 1px 0 rgba(255,255,255,0.1);
-        }
-
-        .contact-item:hover::before,
-        .contact-item:active::before {
-            opacity: 1;
-        }
-
-        .contact-item .icon {
-            width: 52px;
-            height: 52px;
-            min-width: 52px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(201, 164, 86, 0.15);
-            border: 1px solid rgba(201, 164, 86, 0.3);
-            border-radius: 50%;
-            transition: all 0.4s ease;
-            position: relative;
-            z-index: 1;
-        }
-
-        .contact-item:hover .icon,
-        .contact-item:active .icon {
-            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
-            border-color: var(--gold);
-            box-shadow: 0 4px 20px rgba(201, 164, 86, 0.4);
-            transform: scale(1.05);
-        }
-
-        .contact-item .icon svg {
-            width: 22px;
-            height: 22px;
-            stroke: var(--gold);
-            transition: stroke 0.4s ease;
-        }
-
-        .contact-item:hover .icon svg,
-        .contact-item:active .icon svg {
-            stroke: white;
-        }
-
-        .contact-item .info {
-            flex: 1;
-            position: relative;
-            z-index: 1;
-        }
-
-        .contact-item h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-            color: white;
-            margin-bottom: 0.2rem;
-            transition: color 0.3s ease;
-        }
-
-        .contact-item:hover h3,
-        .contact-item:active h3 {
-            color: var(--gold-light);
-        }
-
-        .contact-item .role {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.5);
-            font-style: italic;
-            margin-bottom: 0.4rem;
-        }
-
-        .contact-item a {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--gold);
-            text-decoration: none;
-            font-family: 'Cinzel', serif;
-            font-size: 0.8rem;
-            letter-spacing: 0.1em;
-            transition: all 0.3s ease;
-        }
-
-        .contact-item:hover a,
-        .contact-item:active a {
-            color: var(--gold-light);
-            letter-spacing: 0.15em;
-        }
-
-        .contact-item a svg {
-            width: 14px;
-            height: 14px;
-            transition: transform 0.3s ease;
-        }
-
-        .contact-item:hover a svg,
-        .contact-item:active a svg {
-            transform: translateX(4px);
-        }
-
-        /* Footer Separator */
-        .footer-separator {
-            background: var(--cream);
-            height: 5rem;
-            position: relative;
-        }
-
-        .footer-separator::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 1px;
-            height: 40px;
-            background: linear-gradient(to bottom, transparent, var(--gold));
-        }
-
         /* Footer */
         footer {
-            background: var(--cream);
+            background: var(--burgundy);
             text-align: center;
-            padding: 2rem 2rem 4rem;
+            padding: 4rem 2rem;
         }
 
         footer .logo-small {
@@ -770,7 +545,7 @@
         footer .couple-names-small {
             font-family: 'Playfair Display', serif;
             font-size: 1.4rem;
-            color: var(--burgundy);
+            color: white;
             margin-bottom: 0.5rem;
         }
 
@@ -783,17 +558,17 @@
         footer .date-small {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1rem;
-            color: var(--text-light);
+            color: rgba(255,255,255,0.7);
             font-style: italic;
         }
 
         footer .credits {
             margin-top: 3rem;
             padding-top: 2rem;
-            border-top: 1px solid rgba(0,0,0,0.06);
+            border-top: 1px solid rgba(255,255,255,0.1);
             font-family: 'Cormorant Garamond', serif;
             font-size: 0.85rem;
-            color: var(--text-light);
+            color: rgba(255,255,255,0.5);
             font-style: italic;
         }
 
@@ -873,28 +648,6 @@
 
             .countdown-item .number {
                 font-size: 2.5rem;
-            }
-
-            .contact-section {
-                padding: 4rem 1.5rem;
-            }
-
-            .contact-item {
-                padding: 1.25rem 1.5rem;
-            }
-
-            .contact-item .icon {
-                width: 46px;
-                height: 46px;
-                min-width: 46px;
-            }
-
-            .contact-item h3 {
-                font-size: 1.1rem;
-            }
-
-            .footer-separator {
-                height: 4rem;
             }
         }
 
@@ -1027,57 +780,8 @@
                 height: 20px;
             }
 
-            .contact-section {
-                padding: 3rem 1.25rem;
-            }
-
-            .contact-intro {
-                font-size: 0.95rem;
-                margin-bottom: 2rem;
-            }
-
-            .contact-list {
-                gap: 1rem;
-            }
-
-            .contact-item {
-                padding: 1rem 1.25rem;
-                gap: 1rem;
-            }
-
-            .contact-item .icon {
-                width: 42px;
-                height: 42px;
-                min-width: 42px;
-            }
-
-            .contact-item .icon svg {
-                width: 18px;
-                height: 18px;
-            }
-
-            .contact-item h3 {
-                font-size: 1rem;
-            }
-
-            .contact-item .role {
-                font-size: 0.8rem;
-            }
-
-            .contact-item a {
-                font-size: 0.7rem;
-            }
-
-            .footer-separator {
-                height: 3rem;
-            }
-
-            .footer-separator::before {
-                height: 25px;
-            }
-
             footer {
-                padding: 1.5rem 1.25rem 3rem;
+                padding: 3rem 1.25rem;
             }
 
             footer .logo-small {
@@ -1125,7 +829,6 @@
     <nav id="navbar">
         <a href="#home">Home</a>
         <a href="#events">Events</a>
-        <a href="#contact">Contact</a>
     </nav>
 
     <!-- Hero Section -->
@@ -1288,66 +991,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Contact Section -->
-    <section class="contact-section" id="contact">
-        <div class="section-header fade-in">
-            <div class="ornament">
-                <span class="line"></span>
-                <span class="diamond"></span>
-                <span class="line"></span>
-            </div>
-            <h2>Get in Touch</h2>
-        </div>
-
-        <div class="contact-wrapper">
-            <p class="contact-intro fade-in">
-                For any queries regarding the celebration,<br>
-                please feel free to reach out to us.
-            </p>
-
-            <div class="contact-list">
-                <div class="contact-item fade-in">
-                    <div class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-                        </svg>
-                    </div>
-                    <div class="info">
-                        <h3>Ahmed Khan</h3>
-                        <p class="role">Event Coordination</p>
-                        <a href="tel:+1234567890">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                            </svg>
-                            +1 (234) 567-890
-                        </a>
-                    </div>
-                </div>
-
-                <div class="contact-item fade-in">
-                    <div class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-                        </svg>
-                    </div>
-                    <div class="info">
-                        <h3>Fatima Rahman</h3>
-                        <p class="role">Event Coordination</p>
-                        <a href="tel:+1234567891">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                            </svg>
-                            +1 (234) 567-891
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer Separator -->
-    <div class="footer-separator"></div>
 
     <!-- Footer -->
     <footer>
